@@ -1,9 +1,9 @@
 # react-redux-registration-login-example
 
-React + Redux - User Registration and Login Tutorial & Example
+React + Redux - User Registration and Login poc
 
 
-# npm install
+npm install
 
-# npm start
-# srini-react-poc
+npm start
+
