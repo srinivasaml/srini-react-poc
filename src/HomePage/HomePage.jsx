@@ -16,26 +16,40 @@ class HomePage extends React.Component {
     render() {
         const { user, users } = this.props;
         return (
-            <div className="col-md-6 col-md-offset-3">
-                <h1>Hi {user.firstName}!</h1>
-                <p>You're logged in with React!!</p>
+            <div className="col col-xl-10 col-lg-12">
+                <h1 style={{'fontSize': '32px'}}>Hi {user.firstName}!</h1>
+                
                 <h3>All registered users:</h3>
-                {users.loading && <em>Loading users...</em>}
-                {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-                {users.items &&
-                    <ul>
+  
+                <div class="card-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        {users.items &&
+                        <tbody>
+                       
                         {users.items.map((user, index) =>
-                            <li key={user.id}>
-                                {user.firstName + ' ' + user.lastName}
-                                {
-                                    user.deleting ? <em> - Deleting...</em>
-                                    : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
-                                    : <span> - <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>
-                                }
-                            </li>
+                        <tr>
+                            <th scope="row">{user.id}</th>
+                            <td>{user.firstName}</td>
+                            <td>{user.lastName}</td>
+                            <td> 
+                                <span> <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>           
+                            </td>
+                        </tr>
                         )}
-                    </ul>
-                }
+                        
+                        </tbody>
+                        }
+                    </table>
+                </div>
+
                 <p>
                     <Link to="/login">Logout</Link>
                 </p>
