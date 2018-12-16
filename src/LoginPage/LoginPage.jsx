@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 import { userActions } from '../_actions';
 
 class LoginPage extends React.Component {
@@ -35,6 +35,9 @@ class LoginPage extends React.Component {
         if (username && password) {
             dispatch(userActions.login(username, password));
         }
+       //  axios.delete(`http://localhost:3000/users/delete/1`,  {"id": 1})
+        //  .then( res => console.log(res) )
+        //  .catch(err => console.log(err));
     }
 
     render() {
